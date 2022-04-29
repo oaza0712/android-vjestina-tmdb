@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable-mdpi/iron_man_1.xml" value="0.1" />
         <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/star_button_1x.xml" value="0.1" />
       </map>
     </option>
   </component>

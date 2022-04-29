@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_card_width">122dp</dimen>
+    <dimen name="movie_card_height">179dp</dimen>
+    <dimen name="small_spacing">8dp</dimen>
+    <dimen name="large_spacing">16dp</dimen>
+    <dimen name="button_size">32dp</dimen>
+    <dimen name="button_position">5dp</dimen>
+    <dimen name="home_movies_list_content_padding">8dp</dimen>
+    <dimen name="micro_spacing">3dp</dimen>
+    <dimen name="actor_card_height">140dp</dimen>
+</resources>
