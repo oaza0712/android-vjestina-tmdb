@@ -2,6 +2,7 @@ package com.example.tmdb.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -26,11 +27,15 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.savedstate.ViewTreeSavedStateRegistryOwner.get
 import com.example.tmdb.R
 import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
+import androidx.lifecycle.ViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.dsl.module
 
 @Preview(showBackground = true)
 @Composable
@@ -82,14 +87,7 @@ fun HomeScreen() {
                     )
                 }
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(15.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Main text
             item {
                 Text(
@@ -98,17 +96,12 @@ fun HomeScreen() {
                     color = Colors.Blue700,
                     fontWeight = FontWeight(800),
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(horizontal = 15.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .padding(top = 15.dp, bottom = 10.dp)
                 )
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Small Text
             item {
                 Row(Modifier.fillMaxWidth()) {
@@ -125,33 +118,32 @@ fun HomeScreen() {
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                     Text(
                         text = "For Rent",
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                     Text(
                         text = "In theathers",
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                 }
 
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Movie List
             item {
                 var movieList by remember {
@@ -161,19 +153,19 @@ fun HomeScreen() {
                                 id = 1,
                                 title = "Iron Man 1",
                                 overview = "Iron Man1",
-                                imageUrl = "R.drawable.iron_man_1_1X"
+                                imageUrl = R.drawable.iron_man_1_1x
                             ),
                             MovieItemViewState(
                                 id = 2,
                                 title = "GATTACA",
                                 overview = "GATTACA",
-                                imageUrl = "R.drawable.gattaca_1X"
+                                imageUrl = R.drawable.gattaca_1x
                             ),
                             MovieItemViewState(
                                 id = 3,
                                 title = "Lion King",
                                 overview = "Lion King",
-                                imageUrl = "R.drawable.lion_king_1X"
+                                imageUrl = R.drawable.lion_king_1x_
                             )
                         )
                     )
@@ -185,14 +177,6 @@ fun HomeScreen() {
                 )
             }
 
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(15.dp)
-                        .fillMaxWidth()
-                )
-            }
             //Main Text
             item {
                 Text(
@@ -200,17 +184,12 @@ fun HomeScreen() {
                     color = Colors.Blue700,
                     fontWeight = FontWeight(800),
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(horizontal = 15.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .padding(top = 15.dp, bottom = 10.dp)
                 )
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Small text
             item {
                 Row(Modifier.fillMaxWidth()) {
@@ -220,26 +199,23 @@ fun HomeScreen() {
                         color = Colors.Blue700,
                         fontWeight = FontWeight(800),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                     Text(
                         text = "TV",
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                 }
 
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Movie List
             item {
                 var movieList by remember {
@@ -249,19 +225,19 @@ fun HomeScreen() {
                                 id = 1,
                                 title = "Iron Man 1",
                                 overview = "Iron Man1",
-                                imageUrl = "R.drawable.iron_man_1_1X"
+                                imageUrl = R.drawable.iron_man_1_1x
                             ),
                             MovieItemViewState(
                                 id = 2,
                                 title = "GATTACA",
                                 overview = "GATTACA",
-                                imageUrl = "R.drawable.gattaca_1X"
+                                imageUrl = R.drawable.gattaca_1x
                             ),
                             MovieItemViewState(
                                 id = 3,
                                 title = "Lion King",
                                 overview = "Lion King",
-                                imageUrl = "R.drawable.lion_king_1X"
+                                imageUrl = R.drawable.lion_king_1x_
                             )
                         )
                     )
@@ -273,14 +249,6 @@ fun HomeScreen() {
                 )
             }
 
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(15.dp)
-                        .fillMaxWidth()
-                )
-            }
             //Main text
             item {
                 Text(
@@ -288,17 +256,12 @@ fun HomeScreen() {
                     color = Colors.Blue700,
                     fontWeight = FontWeight(800),
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(horizontal = 15.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .padding(top = 15.dp, bottom = 10.dp)
                 )
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Small text
             item {
                 Row(Modifier.fillMaxWidth()) {
@@ -308,26 +271,23 @@ fun HomeScreen() {
                         color = Colors.Blue700,
                         fontWeight = FontWeight(800),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                     Text(
                         text = "This week",
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .padding(bottom = 10.dp)
                     )
                 }
 
             }
-            //Spacer
-            item {
-                Spacer(
-                    Modifier
-                        .height(10.dp)
-                        .fillMaxWidth()
-                )
-            }
+
             //Movie List
             item {
                 var movieList by remember {
@@ -337,19 +297,19 @@ fun HomeScreen() {
                                 id = 1,
                                 title = "Iron Man 1",
                                 overview = "Iron Man1",
-                                imageUrl = "R.drawable.iron_man_1_1X"
+                                imageUrl = R.drawable.iron_man_1_1x
                             ),
                             MovieItemViewState(
                                 id = 2,
                                 title = "GATTACA",
                                 overview = "GATTACA",
-                                imageUrl = "R.drawable.gattaca_1X"
+                                imageUrl = R.drawable.gattaca_1x
                             ),
                             MovieItemViewState(
                                 id = 3,
                                 title = "Lion King",
                                 overview = "Lion King",
-                                imageUrl = "R.drawable.lion_king_1X"
+                                imageUrl = R.drawable.lion_king_1x_
                             )
                         )
                     )

@@ -40,9 +40,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val currentScreen: Screen = Router.currentScreen
-                    when (Router.currentScreen) {
+                    when (currentScreen) {
                         is Screen.MainScreen -> {
-                            val tab: MainScreenTab = (currentScreen as Screen.MainScreen).tab
+                            val tab: MainScreenTab = currentScreen.tab
                             MainScreen(mainScreenTab = tab)
                         }
                         Screen.Details -> DetailsScreen()

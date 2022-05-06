@@ -21,13 +21,6 @@ import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.FavoriteButton
 import com.example.tmdb.ui.theme.TmdbTheme
 
-data class ActorItemViewState(
-    val id: Int,
-    val name: String,
-    val role: String,
-    val imageUrl: String
-)
-
 @Composable
 fun ActorCard(
     modifier: Modifier = Modifier,
@@ -50,27 +43,21 @@ fun ActorCard(
                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.small_spacing))),
             contentScale = ContentScale.FillBounds
         )
-        Spacer(
-            Modifier
-                .height(5.dp)
-        )
+
         Text(
             text = item.name,
             color = Colors.Blue700,
             fontWeight = FontWeight(800),
             fontSize = 20.sp,
-            modifier = Modifier.padding(start = 5.dp),
+            modifier = Modifier.padding(start = 5.dp, top = 5.dp),
         )
-        Spacer(
-            Modifier
-                .height(5.dp)
-        )
+
         Text(
             text = item.role,
             color = Colors.Grey200,
             fontWeight = FontWeight(400),
             fontSize = 15.sp,
-            modifier = Modifier.padding(start = 5.dp),
+            modifier = Modifier.padding(start = 5.dp, top = 5.dp),
         )
     }
 }

@@ -21,14 +21,14 @@ import com.example.tmdb.ui.theme.Colors.Blue700
 fun FavoriteButton(
     modifier: Modifier = Modifier,
     isFavorite: Boolean = false,
-    onClicked: (Boolean) -> Unit = {},
+    onClicked: () -> Unit = {},
 ) {
     Image(
         painter = painterResource(id = if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite),
         contentDescription = "Favorite Button",
         modifier = modifier
             .clickable {
-                onClicked.invoke(!isFavorite)
+                onClicked.invoke()
             }
             .size(dimensionResource(id = R.dimen.button_size))
             .background(Colors.Blue700.copy(alpha = 0.6f), CircleShape)

@@ -17,12 +17,6 @@ import com.example.tmdb.R
 import com.example.tmdb.ui.theme.FavoriteButton
 import com.example.tmdb.ui.theme.TmdbTheme
 
-data class MovieItemViewState(
-    val id: Int,
-    val title: String,
-    val overview: String,
-    val imageUrl: String
-)
 
 @Composable
 fun MovieCard(
@@ -35,7 +29,7 @@ fun MovieCard(
         modifier = modifier.clickable { onMovieItemClick() }
     ) {
         Image(
-            painter = painterResource(R.drawable.iron_man_1_1x),
+            painter = painterResource(item.imageUrl),
             contentDescription = null,
             modifier = Modifier
                 .size(
@@ -65,7 +59,7 @@ fun MovieCardPreview() {
                 id = 1,
                 title = "Iron Man",
                 overview = "Iron Man",
-                imageUrl = "R.drawable.iron_man_1_1x"
+                imageUrl = R.drawable.iron_man_1_1x
             )
         )
     }

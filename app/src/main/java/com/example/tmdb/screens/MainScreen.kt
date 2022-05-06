@@ -32,22 +32,6 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
                 backgroundColor = Colors.Blue500
             )
             {
-                Row() {
-                    Box() {
-                        when (Router.currentScreen) {
-                            is Screen.Details -> Image(
-                                painter = painterResource(id = R.drawable.back_button_1x),
-                                contentDescription = "back button",
-                                modifier = Modifier
-                                    .padding(15.dp)
-                                    .align(
-                                        Alignment.Center
-                                    )
-                                    .clickable { Router.navigateTo(Screen.MainScreen(lastHomeTab)) }
-                            )
-                        }
-                    }
-
                     Image(
                         painter = painterResource(id = R.drawable.tmdb),
                         contentDescription = "TMDB App Bar",
@@ -59,8 +43,6 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
                             .padding(8.dp)
                             .scale(3F)
                     )
-                }
-
             }
         },
         bottomBar = {

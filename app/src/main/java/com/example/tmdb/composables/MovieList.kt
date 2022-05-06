@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.tmdb.R
 import com.example.tmdb.composables.MovieCard
 import com.example.tmdb.composables.MovieItemViewState
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun MoviesList(
@@ -56,25 +57,25 @@ fun MoviesListPreview() {
                         id = 1,
                         title = "Iron Man 1",
                         overview = "Iron Man1",
-                        imageUrl = "R.drawable.iron_man_1_1X"
+                        imageUrl = R.drawable.iron_man_1_1x
                     ),
                     MovieItemViewState(
                         id = 2,
                         title = "GATTACA",
                         overview = "GATTACA",
-                        imageUrl = "R.drawable.gattaca_1X"
+                        imageUrl = R.drawable.gattaca_1x
                     ),
                     MovieItemViewState(
                         id = 3,
                         title = "Lion King",
                         overview = "Lion King",
-                        imageUrl = "R.drawable.lion_king_1X"
+                        imageUrl = R.drawable.lion_king_1x_
                     ),
                     MovieItemViewState(
                         id = 3,
                         title = "Lion King",
                         overview = "Lion King",
-                        imageUrl = "R.drawable.lion_king_1X"
+                        imageUrl = R.drawable.lion_king_1x_
                     )
                 )
             )
