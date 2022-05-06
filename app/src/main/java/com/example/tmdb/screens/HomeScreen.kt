@@ -57,8 +57,6 @@ fun HomeScreen() {
                         .padding(10.dp)
                         .background(Colors.Grey100)
                         .clip(RoundedCornerShape(2.dp))
-                    //.border(width = 3.dp, brush =Brush.linearGradient() , shape = RoundedCornerShape(5.dp))
-
                 )
                 {
                     IconButton(onClick = { })

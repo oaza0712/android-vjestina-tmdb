@@ -34,7 +34,15 @@ import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.FavoriteButton
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
-
+@Preview
+@Composable
+fun DetailsPreview(){
+    Scaffold() {
+        TmdbTheme {
+            DetailsScreen()
+        }
+    }
+}
 
 @Preview
 @Composable
@@ -85,228 +93,239 @@ fun DetailsScreen() {
                 .verticalScroll(scrollState)
                 ) {
             //Picture
-
-            //Main text
-
-                Text(
-                    text = "Overview",
-                    color = Colors.Blue700,
-                    fontWeight = FontWeight(800),
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .padding(top = 15.dp)
-                )
-
-            //Text
-                Text(
-                    text = stringResource(id = R.string.overview_text) /*"After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."*/,
-                    color = Colors.Blue700,
-                    fontWeight = FontWeight(300),
-                    fontSize = 15.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .padding(top = 10.dp, bottom = 10.dp)
-                )
-
-
-            //Small Text
-
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Don Heck",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
-                    )
-                    Text(
-                        text = "Jack Kirby",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
-                    )
-                    Text(
-                        text = "John Favreau",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(horizontal = 15.dp)
-                    )
-                }
-
-
-
-            //Small Text
-
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Characters",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Characters",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Director",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                }
-
-
-
-            //Small Text
-
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Don Heck",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Jack Marcum",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Matt Holloway",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                }
-
-
-
-            //Small Text
-
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Screenplay",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Screenplay",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                    Text(
-                        text = "Screenplay",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 10.dp)
-                    )
-                }
-
-
-
-            //Actor List
-
-                Row() {
-                    Text(
-                        text = "Top Billed Cast",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 20.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 20.dp, bottom = 20.dp)
-                    )
-                    Text(
-                        textAlign = TextAlign.Right,
-                        text = "Full cast & crew",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(400),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(top = 20.dp, bottom = 20.dp),
-                    )
-                }
-
-
-
-            //Movie List
-
-                var actorList by remember {
-                    mutableStateOf(
-                        listOf(
-                            ActorItemViewState(
-                                id = 1,
-                                name = "Robert Downey Jr.",
-                                role = "Tony Stark/Iron Man",
-                                imageUrl = "R.drawable.iron_man_1_1x"
-                            ),
-                            ActorItemViewState(
-                                id = 1,
-                                name = "Robert Downey Jr.",
-                                role = "Tony Stark/Iron Man",
-                                imageUrl = "R.drawable.iron_man_1_1x"
-                            ),
-                            ActorItemViewState(
-                                id = 1,
-                                name = "Robert Downey Jr.",
-                                role = "Tony Stark/Iron Man",
-                                imageUrl = "R.drawable.iron_man_1_1x"
-                            ),
-                            ActorItemViewState(
-                                id = 1,
-                                name = "Robert Downey Jr.",
-                                role = "Tony Stark/Iron Man",
-                                imageUrl = "R.drawable.iron_man_1_1x"
-                            )
-                        )
-                    )
-                }
-                ActorList(
-                    modifier = Modifier,
-                    onActorItemClick = { },
-                    actorItems = actorList,
-                )
-
+            Header()
+            Overview()
+            Details_1()
+            Actors()
+            BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(Router.lastHomeTab)) })
         }
     }
 }
+
+@Composable
+private fun ColumnScope.Actors() {
+    //Actor List
+
+    Row() {
+        Text(
+            text = "Top Billed Cast",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 20.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 20.dp, bottom = 20.dp)
+        )
+        Text(
+            textAlign = TextAlign.Right,
+            text = "Full cast & crew",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(400),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 20.dp, bottom = 20.dp),
+        )
+    }
+
+    //Movie List
+    var actorList by remember {
+        mutableStateOf(
+            listOf(
+                ActorItemViewState(
+                    id = 1,
+                    name = "Robert Downey Jr.",
+                    role = "Tony Stark/Iron Man",
+                    imageUrl = "R.drawable.iron_man_1_1x"
+                ),
+                ActorItemViewState(
+                    id = 1,
+                    name = "Robert Downey Jr.",
+                    role = "Tony Stark/Iron Man",
+                    imageUrl = "R.drawable.iron_man_1_1x"
+                ),
+                ActorItemViewState(
+                    id = 1,
+                    name = "Robert Downey Jr.",
+                    role = "Tony Stark/Iron Man",
+                    imageUrl = "R.drawable.iron_man_1_1x"
+                ),
+                ActorItemViewState(
+                    id = 1,
+                    name = "Robert Downey Jr.",
+                    role = "Tony Stark/Iron Man",
+                    imageUrl = "R.drawable.iron_man_1_1x"
+                )
+            )
+        )
+    }
+    ActorList(
+        modifier = Modifier,
+        onActorItemClick = { },
+        actorItems = actorList,
+    )
+
+}
+@Composable
+private fun ColumnScope.Details_1() {
+    //Small Text
+
+    Row(Modifier.fillMaxWidth()) {
+        Text(
+            text = "Don Heck",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier.padding(horizontal = 15.dp)
+        )
+        Text(
+            text = "Jack Kirby",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier.padding(horizontal = 15.dp)
+        )
+        Text(
+            text = "John Favreau",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier.padding(horizontal = 15.dp)
+        )
+    }
+
+
+
+    //Small Text
+
+    Row(Modifier.fillMaxWidth()) {
+        Text(
+            text = "Characters",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Characters",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Director",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+    }
+
+
+
+    //Small Text
+
+    Row(Modifier.fillMaxWidth()) {
+        Text(
+            text = "Don Heck",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Jack Marcum",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Matt Holloway",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(800),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+    }
+
+
+
+    //Small Text
+
+    Row(Modifier.fillMaxWidth()) {
+        Text(
+            text = "Screenplay",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Screenplay",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+        Text(
+            text = "Screenplay",
+            color = Colors.Blue700,
+            fontWeight = FontWeight(300),
+            fontSize = 15.sp,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .padding(top = 10.dp)
+        )
+    }
+
+
+
+}
+@Composable
+private fun ColumnScope.Overview() {
+    //Main text
+
+    Text(
+        text = "Overview",
+        color = Colors.Blue700,
+        fontWeight = FontWeight(800),
+        fontSize = 20.sp,
+        modifier = Modifier
+            .padding(horizontal = 15.dp)
+            .padding(top = 15.dp)
+    )
+
+    //Text
+    Text(
+        text = stringResource(id = R.string.overview_text) /*"After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."*/,
+        color = Colors.Blue700,
+        fontWeight = FontWeight(300),
+        fontSize = 15.sp,
+        modifier = Modifier
+            .padding(horizontal = 15.dp)
+            .padding(top = 10.dp, bottom = 10.dp)
+    )
+
+}
+
 @Composable
 private fun ColumnScope.Header(){
     Box(
