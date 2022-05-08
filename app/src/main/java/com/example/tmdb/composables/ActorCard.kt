@@ -33,7 +33,7 @@ fun ActorCard(
             .width(122.dp)
     ) {
         Image(
-            painter = painterResource(R.drawable.rdj_1x_),
+            painter = painterResource(item.imageUrl),
             contentDescription = null,
             modifier = Modifier
                 .size(
@@ -72,7 +72,7 @@ fun ActorCardPreview() {
                 id = 1,
                 name = "Robert Downey Jr.",
                 role = "Tony Stark/Iron Man",
-                imageUrl = "R.drawable.iron_man_1_1x"
+                imageUrl = R.drawable.rdj_1x_
             )
         )
     }

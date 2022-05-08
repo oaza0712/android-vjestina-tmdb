@@ -85,15 +85,13 @@ fun FavoritesScreen() {
                     Box(Modifier.padding(bottom = 10.dp)) {
                         MovieCard(
                             item = item,
-                            onMovieItemClick = { Router.navigateTo(Screen.Details) },
+                            onMovieItemClick = { Router.navigateTo(Screen.Details(item))},
                             isFavorite = true
                         )
                     }
                 }
             }
-
         }
-
     }
     BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab)) })
 }

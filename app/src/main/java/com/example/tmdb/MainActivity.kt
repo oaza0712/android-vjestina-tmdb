@@ -45,7 +45,10 @@ class MainActivity : ComponentActivity() {
                             val tab: MainScreenTab = currentScreen.tab
                             MainScreen(mainScreenTab = tab)
                         }
-                        Screen.Details -> DetailsScreen()
+                        Screen.Details(movie = (currentScreen as Screen.Details).movie)-> {
+                            val movieData: MovieItemViewState = (currentScreen as Screen.Details).movie
+                            ScreenDetails(movie = movieData)
+                        }
                     }
                 }
 

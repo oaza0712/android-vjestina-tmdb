@@ -45,25 +45,25 @@ fun ActorListPreview() {
                         id = 1,
                         name = "Robert Downey Jr.",
                         role = "Tony Stark/Iron Man",
-                        imageUrl = "R.drawable.iron_man_1_1x"
+                        imageUrl =  R.drawable.rdj_1x_
                     ),
                     ActorItemViewState(
                         id = 1,
                         name = "Robert Downey Jr.",
                         role = "Tony Stark/Iron Man",
-                        imageUrl = "R.drawable.iron_man_1_1x"
+                        imageUrl = R.drawable.terrence_howard_1x_
                     ),
                     ActorItemViewState(
                         id = 1,
                         name = "Robert Downey Jr.",
                         role = "Tony Stark/Iron Man",
-                        imageUrl = "R.drawable.iron_man_1_1x"
+                        imageUrl = R.drawable.terrence_howard_1x_
                     ),
                     ActorItemViewState(
                         id = 1,
                         name = "Robert Downey Jr.",
                         role = "Tony Stark/Iron Man",
-                        imageUrl = "R.drawable.iron_man_1_1x"
+                        imageUrl = R.drawable.rdj_1x_
                     )
                 )
             )

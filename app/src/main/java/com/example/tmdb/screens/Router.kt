@@ -3,10 +3,11 @@ package com.example.tmdb.screens
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.example.tmdb.composables.MovieItemViewState
 
 sealed class Screen() {
     data class MainScreen(val tab: MainScreenTab) : Screen()
-    object Details : Screen()
+    data class Details (val movie: MovieItemViewState) : Screen()
 }
 
 open class MainScreenTab() {
@@ -15,10 +16,12 @@ open class MainScreenTab() {
 }
 
 object Router {
-    var currentScreen: Screen by mutableStateOf(Screen.MainScreen(MainScreenTab.HomeTab))
+    var currentScreen: Screen  by mutableStateOf(Screen.MainScreen(MainScreenTab.HomeTab))
     var lastHomeTab: MainScreenTab = (currentScreen as Screen.MainScreen).tab
+    var movieR: MovieItemViewState? = null
     fun navigateTo(destination: Screen) {
         lastHomeTab = (currentScreen as Screen.MainScreen).tab
         currentScreen = destination
+        movieR = (currentScreen as Screen.Details).movie
     }
 }

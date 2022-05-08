@@ -6,7 +6,9 @@ import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -25,28 +27,99 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tmdb.R
-import com.example.tmdb.composables.ActorItemViewState
-import com.example.tmdb.composables.ActorList
-import com.example.tmdb.composables.MovieItemViewState
-import com.example.tmdb.composables.StarButton
+import com.example.tmdb.composables.*
 import com.example.tmdb.screens.Router.currentScreen
 import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.FavoriteButton
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
+import org.w3c.dom.Text
+
+var actorList =
+    listOf(
+        ActorItemViewState(
+            id = 1,
+            name = "Robert Downey Jr.",
+            role = "Tony Stark/Iron Man",
+            imageUrl = R.drawable.rdj_1x_
+        ),
+        ActorItemViewState(
+            id = 1,
+            name = "Robert Downey Jr.",
+            role = "Tony Stark/Iron Man",
+            imageUrl = R.drawable.terrence_howard_1x_
+        ),
+        ActorItemViewState(
+            id = 1,
+            name = "Robert Downey Jr.",
+            role = "Tony Stark/Iron Man",
+            imageUrl = R.drawable.terrence_howard_1x_
+        ),
+        ActorItemViewState(
+            id = 1,
+            name = "Robert Downey Jr.",
+            role = "Tony Stark/Iron Man",
+            imageUrl = R.drawable.rdj_1x_
+        )
+    )
+var crewList = listOf(
+    CrewItemViewState(
+        name = "Don Heck",
+        job = "Characters",
+    ),
+    CrewItemViewState(
+        name = "Jon Kirby",
+        job = "Characters",
+    ),
+    CrewItemViewState(
+        name = "Jon Favreau",
+        job = "Director",
+    ),
+    CrewItemViewState(
+        name = "Don Heck",
+        job = "Screenplay",
+    ),
+    CrewItemViewState(
+        name = "Jack Marcum",
+        job = "Screnplay",
+    ),
+    CrewItemViewState(
+        name = "Matt Holloway",
+        job = "Screnplay",
+    )
+)
+
 @Preview
 @Composable
-fun DetailsPreview(){
+fun DetailsPreview() {
     Scaffold() {
         TmdbTheme {
-            DetailsScreen()
+            DetailsContent(overview = "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                progress = "75%",
+                movieTitle = "Iron Man",
+                year = "2008",
+                releaseDate = "05/02/2008 (US)",
+                genre = "Action, Science Fiction, Adventure",
+                duration = "2h 6m",
+                crewList =  crewList,
+                actorList = actorList)
         }
     }
 }
 
-@Preview
+
 @Composable
-fun DetailsScreen() {
+fun DetailsContent(
+    overview: String,
+    progress: String,
+    movieTitle: String,
+    year: String,
+    releaseDate: String,
+    genre: String,
+    duration: String,
+    crewList: List<CrewItemViewState>,
+    actorList: List<ActorItemViewState>
+) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     Scaffold(
         scaffoldState = scaffoldState,
@@ -91,20 +164,35 @@ fun DetailsScreen() {
             Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
-                ) {
-            //Picture
-            Header()
-            Overview()
-            Details_1()
-            Actors()
+        ) {
+            Header(progress, movieTitle, year, releaseDate, genre, duration)
+            Overview(overview)
+            Crew(crewList)
+            Actors(actorList)
             BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(Router.lastHomeTab)) })
         }
     }
 }
 
 @Composable
-private fun ColumnScope.Actors() {
-    //Actor List
+fun ScreenDetails(movie: MovieItemViewState) {
+    //predstavlja dohvaćanje podataka o filmu kroz API
+
+    DetailsContent(
+        overview = "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+        progress = "75%",
+        movieTitle = movie.title,
+        year = "2008",
+        releaseDate = "05/02/2008 (US)",
+        genre = "Action, Science Fiction, Adventure",
+        duration = "2h 6m",
+        crewList=crewList,
+        actorList = actorList
+    )
+}
+
+@Composable
+private fun ColumnScope.Actors(actorList: List<ActorItemViewState>) {
 
     Row() {
         Text(
@@ -128,180 +216,20 @@ private fun ColumnScope.Actors() {
         )
     }
 
-    //Movie List
-    var actorList by remember {
-        mutableStateOf(
-            listOf(
-                ActorItemViewState(
-                    id = 1,
-                    name = "Robert Downey Jr.",
-                    role = "Tony Stark/Iron Man",
-                    imageUrl = "R.drawable.iron_man_1_1x"
-                ),
-                ActorItemViewState(
-                    id = 1,
-                    name = "Robert Downey Jr.",
-                    role = "Tony Stark/Iron Man",
-                    imageUrl = "R.drawable.iron_man_1_1x"
-                ),
-                ActorItemViewState(
-                    id = 1,
-                    name = "Robert Downey Jr.",
-                    role = "Tony Stark/Iron Man",
-                    imageUrl = "R.drawable.iron_man_1_1x"
-                ),
-                ActorItemViewState(
-                    id = 1,
-                    name = "Robert Downey Jr.",
-                    role = "Tony Stark/Iron Man",
-                    imageUrl = "R.drawable.iron_man_1_1x"
-                )
-            )
-        )
-    }
     ActorList(
         modifier = Modifier,
         onActorItemClick = { },
         actorItems = actorList,
     )
-
 }
+
 @Composable
-private fun ColumnScope.Details_1() {
-    //Small Text
-
-    Row(Modifier.fillMaxWidth()) {
-        Text(
-            text = "Don Heck",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier.padding(horizontal = 15.dp)
-        )
-        Text(
-            text = "Jack Kirby",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier.padding(horizontal = 15.dp)
-        )
-        Text(
-            text = "John Favreau",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier.padding(horizontal = 15.dp)
-        )
-    }
-
-
-
-    //Small Text
-
-    Row(Modifier.fillMaxWidth()) {
-        Text(
-            text = "Characters",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Characters",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Director",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-    }
-
-
-
-    //Small Text
-
-    Row(Modifier.fillMaxWidth()) {
-        Text(
-            text = "Don Heck",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Jack Marcum",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Matt Holloway",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(800),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-    }
-
-
-
-    //Small Text
-
-    Row(Modifier.fillMaxWidth()) {
-        Text(
-            text = "Screenplay",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Screenplay",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-        Text(
-            text = "Screenplay",
-            color = Colors.Blue700,
-            fontWeight = FontWeight(300),
-            fontSize = 15.sp,
-            modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 10.dp)
-        )
-    }
-
-
-
+private fun ColumnScope.Crew(crewList: List<CrewItemViewState>) {
+    CrewList(crewItems = crewList)
 }
+
 @Composable
-private fun ColumnScope.Overview() {
-    //Main text
+private fun ColumnScope.Overview(overview: String) {
 
     Text(
         text = "Overview",
@@ -313,21 +241,26 @@ private fun ColumnScope.Overview() {
             .padding(top = 15.dp)
     )
 
-    //Text
     Text(
-        text = stringResource(id = R.string.overview_text) /*"After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."*/,
+        text = overview,
         color = Colors.Blue700,
         fontWeight = FontWeight(300),
         fontSize = 15.sp,
         modifier = Modifier
             .padding(horizontal = 15.dp)
-            .padding(top = 10.dp, bottom = 10.dp)
+            .padding(top = 10.dp, bottom = 20.dp)
     )
-
 }
 
 @Composable
-private fun ColumnScope.Header(){
+private fun ColumnScope.Header(
+    progress: String,
+    movieTitle: String,
+    year: String,
+    releaseDate: String,
+    genre: String,
+    duration: String
+) {
     Box(
         Modifier
             .fillMaxWidth()
@@ -352,7 +285,7 @@ private fun ColumnScope.Header(){
                 Box() {
                     CircularProgressIndicator(progress = 0.75f, color = Colors.Green100)
                     Text(
-                        text = "75%",
+                        text = progress,
                         modifier = Modifier.align(alignment = Alignment.Center),
                         color = Colors.White100,
                         fontSize = 13.sp
@@ -369,7 +302,7 @@ private fun ColumnScope.Header(){
 
             Row(Modifier.fillMaxWidth()) {
                 Text(
-                    text = "Iron Man",
+                    text = movieTitle,
                     modifier = Modifier
                         .padding(5.dp)
                         .padding(top = 10.dp),
@@ -378,7 +311,7 @@ private fun ColumnScope.Header(){
                     color = Colors.White100
                 )
                 Text(
-                    text = "2008",
+                    text = year,
                     modifier = Modifier
                         .padding(5.dp)
                         .padding(top = 10.dp),
@@ -390,7 +323,7 @@ private fun ColumnScope.Header(){
 
             Row(Modifier.fillMaxWidth()) {
                 Text(
-                    text = "05/02/2008 (US)",
+                    text = releaseDate,
                     modifier = Modifier
                         .padding(5.dp)
                         .padding(top = 5.dp),
@@ -402,7 +335,7 @@ private fun ColumnScope.Header(){
 
             Row(Modifier.fillMaxWidth()) {
                 Text(
-                    text = "Action, Science Fiction, Adventure  ",
+                    text = genre,
                     color = Colors.White100,
                     modifier = Modifier
                         .padding(0.dp)
@@ -411,7 +344,7 @@ private fun ColumnScope.Header(){
                     fontWeight = FontWeight(400)
                 )
                 Text(
-                    text = "2h 6m",
+                    text = duration,
                     color = Colors.White100,
                     modifier = Modifier
                         .padding(0.dp)
@@ -427,5 +360,6 @@ private fun ColumnScope.Header(){
                     top = dimensionResource(id = R.dimen.button_position)
                 )
             )
-        }}
+        }
+    }
 }

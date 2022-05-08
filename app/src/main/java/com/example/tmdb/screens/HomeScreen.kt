@@ -170,7 +170,7 @@ fun HomeScreen() {
                 }
                 MoviesList(
                     modifier = Modifier,
-                    onMovieItemClick = { Router.navigateTo(Screen.Details) },
+                    onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
                     movieItems = movieList,
                 )
             }
@@ -242,7 +242,7 @@ fun HomeScreen() {
                 }
                 MoviesList(
                     modifier = Modifier,
-                    onMovieItemClick = { Router.navigateTo(Screen.Details) },
+                    onMovieItemClick = {  Router.navigateTo(Screen.Details(it)) },
                     movieItems = movieList,
                 )
             }
@@ -314,7 +314,7 @@ fun HomeScreen() {
                 }
                 MoviesList(
                     modifier = Modifier,
-                    onMovieItemClick = { Router.navigateTo(Screen.Details) },
+                    onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
                     movieItems = movieList,
                 )
             }
