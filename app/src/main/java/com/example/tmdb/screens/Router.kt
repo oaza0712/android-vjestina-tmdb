@@ -20,8 +20,15 @@ object Router {
     var lastHomeTab: MainScreenTab = (currentScreen as Screen.MainScreen).tab
     var movieR: MovieItemViewState? = null
     fun navigateTo(destination: Screen) {
-        lastHomeTab = (currentScreen as Screen.MainScreen).tab
-        currentScreen = destination
-        movieR = (currentScreen as Screen.Details).movie
+        when (destination) {
+
+            is Screen.MainScreen -> {
+                currentScreen = destination
+            }
+            is Screen.Details -> {
+                lastHomeTab = (currentScreen as Screen.MainScreen).tab
+                currentScreen = destination
+            }
+        }
     }
 }

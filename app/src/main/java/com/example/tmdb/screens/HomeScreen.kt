@@ -48,6 +48,7 @@ fun DefaultPreview() {
 @Composable
 fun HomeScreen() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
+    //val model: HomeViewModel? = null
     Scaffold(scaffoldState = scaffoldState)
     {
         LazyColumn(Modifier.fillMaxSize()) {

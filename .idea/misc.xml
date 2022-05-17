@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable-mdpi/iron_man_1.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/back_button_1x.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/favorites_icon.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/favorites_icon_filled.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/home_icon.xml" value="0.1" />
+        <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/home_icon_filled.xml" value="0.1" />
         <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
         <entry key="..\:/Users/38599/AndroidStudioProjects/Tmdb/app/src/main/res/drawable/star_button_1x.xml" value="0.1" />
       </map>
