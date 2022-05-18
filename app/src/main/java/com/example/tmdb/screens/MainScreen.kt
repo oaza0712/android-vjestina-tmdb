@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -26,6 +27,8 @@ import com.example.tmdb.ui.theme.Colors
 @Composable
 fun MainScreen(mainScreenTab: MainScreenTab) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
+    var selectedIndex: MutableState<Int> = remember{mutableStateOf (1)};
+
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
@@ -91,8 +94,10 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
             }
         }) {
         if (mainScreenTab == MainScreenTab.HomeTab) {
+            selectedIndex.value = 1;
             HomeScreen()
         } else {
+            selectedIndex.value = 0;
             FavoritesScreen()
         }
     }
