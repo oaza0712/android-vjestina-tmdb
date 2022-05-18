@@ -7,7 +7,7 @@ import com.example.tmdb.composables.MovieItemViewState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
-/*
+
 class HomeViewModel(private val MovieRepository: MovieRepository) : ViewModel() {
 
     private val selectedPopularList = MutableStateFlow(0)
@@ -32,4 +32,4 @@ class HomeViewModel(private val MovieRepository: MovieRepository) : ViewModel() 
 
     }
 }
-*/
+

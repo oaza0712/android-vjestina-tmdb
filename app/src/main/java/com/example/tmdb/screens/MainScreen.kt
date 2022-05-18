@@ -60,12 +60,9 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
                         Icon(
                             imageVector = Icons.Default.Home,
                             "Home",
-                            // tint =Colors.Blue700
-
                         )
-
                     },
-                    label = { Text(text = "Home" /*colors = Colors.Grey200.copy(alpha = 0.6f)*/) },
+                    label = { Text(text = "Home") },
                     selected = (selectedIndex.value == 1),
                     onClick = {
                         Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab))
