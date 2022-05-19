@@ -34,8 +34,14 @@ import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.dsl.module
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.toList
 
 @Preview(showBackground = true)
 @Composable
@@ -44,9 +50,9 @@ fun DefaultPreview() {
         HomeScreen();
     }
 }
-
 @Composable
 fun HomeScreen() {
+    val homeViewModel :HomeViewModel= getViewModel()
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     Scaffold(scaffoldState = scaffoldState)
     {
@@ -97,6 +103,10 @@ fun HomeScreen() {
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
                         .padding(top = 15.dp, bottom = 10.dp)
+                        .clickable {
+                            homeViewModel.selected = Popular.STREAMING
+                            movieList = homeViewModel.popularList.collectAsState()
+                        }
                 )
             }
 
@@ -143,7 +153,7 @@ fun HomeScreen() {
             }
 
             //Movie List
-            item {
+            item {/*
                 var movieList by remember {
                     mutableStateOf(
                         listOf(
@@ -167,7 +177,7 @@ fun HomeScreen() {
                             )
                         )
                     )
-                }
+                }*/
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
@@ -216,7 +226,7 @@ fun HomeScreen() {
 
             //Movie List
             item {
-                var movieList by remember {
+                /*var movieList by remember {
                     mutableStateOf(
                         listOf(
                             MovieItemViewState(
@@ -239,7 +249,7 @@ fun HomeScreen() {
                             )
                         )
                     )
-                }
+                }*/
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = {  Router.navigateTo(Screen.Details(it)) },
@@ -288,7 +298,7 @@ fun HomeScreen() {
 
             //Movie List
             item {
-                var movieList by remember {
+                /*var movieList by remember {
                     mutableStateOf(
                         listOf(
                             MovieItemViewState(
@@ -311,7 +321,7 @@ fun HomeScreen() {
                             )
                         )
                     )
-                }
+                }*/
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
