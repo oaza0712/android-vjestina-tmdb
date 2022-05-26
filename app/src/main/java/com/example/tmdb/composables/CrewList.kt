@@ -4,7 +4,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
@@ -20,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tmdb.R
 import com.example.tmdb.screens.Router
 import com.example.tmdb.screens.Screen
-import com.example.tmdb.screens.movieList
+
 import com.example.tmdb.ui.theme.TmdbTheme
 
 
@@ -28,7 +27,7 @@ import com.example.tmdb.ui.theme.TmdbTheme
 @Composable
 fun CrewPreview() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
-    Scaffold(scaffoldState = scaffoldState) {
+    /*Scaffold(scaffoldState = scaffoldState) {
         TmdbTheme() {
             CrewList(
                 crewItems = listOf(
@@ -85,5 +84,5 @@ fun CrewList(
             }
         }
 
-    }
+    }*/
 }

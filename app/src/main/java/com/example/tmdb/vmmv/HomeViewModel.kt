@@ -7,37 +7,49 @@ import com.example.tmdb.composables.MovieItemViewState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
+import androidx.lifecycle.viewModelScope
+import com.example.tmdb.R
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
+///collectaj flow
+//
+////init get movies
 class HomeViewModel(private val MovieRepository: MovieRepository) : ViewModel() {
-     var selected :Popular = Popular.STREAMING
-     val selectedPopular = MutableStateFlow(selected)
-    val popularList = selectedPopular.flatMapLatest{
-        when(it) {
-            Popular.STREAMING -> MovieRepository.getStreaming()
-            Popular.ON_TV -> MovieRepository.getOnTv()
-            Popular.FOR_RENT -> MovieRepository.getForRent()
-            Popular.IN_THEATHERS -> MovieRepository.getInTheaters()
-            Popular.FREE_MOVIES -> TODO()
-            Popular.FREE_TV -> TODO()
-            Popular.TRENDING_TODAY -> TODO()
-            Popular.TRENDING_WEEK -> TODO()
+
+    val popularMovies = MutableStateFlow<List<MovieItemViewState>>(emptyList())
+
+    init {
+        viewModelScope.launch {
+            (MovieRepository.getPopular(selected=Popular.STREAMING)).collect {
+                popularMovies.value = it
+            }
         }
     }
-   suspend fun flat() :List<MovieItemViewState> {
-       return popularList.flatMapConcat { it.asFlow() }.toList()
-   }
-   // private val streamingMovies: Flow<List<MovieItemViewState>> =
-    //   MovieRepository.getStreamingMovieList()
 
-    //nad repo pozovi add ili remove za favorite
 
-    fun selectWhatsPopular(index:Int) {
-
-    }
+    var selected: Popular = Popular.STREAMING
 
 }
 
-enum class Popular{
-    STREAMING, ON_TV, FOR_RENT, IN_THEATHERS, FREE_MOVIES, FREE_TV, TRENDING_TODAY, TRENDING_WEEK
+// 3 flow-a
+
+// private val streamingMovies: Flow<List<MovieItemViewState>> =
+//   MovieRepository.getStreamingMovieList()
+
+//nad repo pozovi add ili remove za favorite
+
+fun selectWhatsPopular(index: Int) {
+
+}
+
+
+enum class Popular {
+    STREAMING, ON_TV, FOR_RENT, IN_THEATHERS
+}
+enum class Free{
+    FREE_MOVIES, FREE_TV
+}
+enum class Trending{
+    TRENDING_TODAY, TRENDING_WEEK
 }

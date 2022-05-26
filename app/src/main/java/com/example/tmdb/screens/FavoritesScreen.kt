@@ -21,51 +21,16 @@ import com.example.tmdb.R
 import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
-import com.example.tmdb.screens.movieList as movieList
 import androidx.compose.foundation.lazy.items
-import androidx.savedstate.ViewTreeSavedStateRegistryOwner
 import com.example.tmdb.composables.MovieCard
-
-var movieList =
-    listOf(
-        MovieItemViewState(
-            id = 1,
-            title = "Iron Man 1",
-            overview = "Iron Man1",
-            imageUrl = R.drawable.iron_man_1_1x
-        ),
-        MovieItemViewState(
-            id = 2,
-            title = "GATTACA",
-            overview = "GATTACA",
-            imageUrl = R.drawable.gattaca_1x
-        ),
-        MovieItemViewState(
-            id = 3,
-            title = "Lion King",
-            overview = "Lion King",
-            imageUrl = R.drawable.lion_king_1x_
-        ),
-        MovieItemViewState(
-            id = 1,
-            title = "Iron Man 1",
-            overview = "Iron Man1",
-            imageUrl = R.drawable.godzilla_1x
-        ),
-        MovieItemViewState(
-            id = 2,
-            title = "GATTACA",
-            overview = "GATTACA",
-            imageUrl = R.drawable.jungle_beat_1x_
-        )
-    )
-
-
+import org.koin.androidx.compose.getViewModel
 @ExperimentalFoundationApi
 @Preview
 @Composable
 fun FavoritesScreen() {
+    /*val favoriteViewModel: FavoriteViewModel = getViewModel()
     val scaffoldStateMain: ScaffoldState = rememberScaffoldState()
+    movieList = favoriteViewModel.favorites;
     Scaffold(scaffoldState = scaffoldStateMain) {
         Column(Modifier.fillMaxSize()) {
 
@@ -85,7 +50,7 @@ fun FavoritesScreen() {
                     Box(Modifier.padding(bottom = 10.dp)) {
                         MovieCard(
                             item = item,
-                            onMovieItemClick = { Router.navigateTo(Screen.Details(item))},
+                            onMovieItemClick = { Router.navigateTo(Screen.Details(item)) },
                             isFavorite = true
                         )
                     }
@@ -93,5 +58,5 @@ fun FavoritesScreen() {
             }
         }
     }
-    BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab)) })
+    BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab)) })*/
 }

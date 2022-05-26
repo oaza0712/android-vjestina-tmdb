@@ -7,7 +7,6 @@ import androidx.compose.ui.Modifier
 import com.example.tmdb.R
 import com.example.tmdb.screens.Router
 import com.example.tmdb.screens.Screen
-import com.example.tmdb.screens.movieList
 import com.example.tmdb.ui.theme.MoviesList
 import kotlinx.coroutines.flow.Flow
 
@@ -28,6 +27,8 @@ interface MovieApi {
 }
 
 internal class MovieApiImpl : MovieApi {
+
+    var movieList = emptyList<MovieItemViewState>()
 
 
     override suspend fun getStreaming(): List<MovieItemViewState> {

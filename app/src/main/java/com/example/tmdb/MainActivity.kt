@@ -27,14 +27,19 @@ import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.screens.*
 import com.example.tmdb.ui.theme.*
 import com.example.tmdb.ui.theme.Colors
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.reflect.InvocationTargetException
 
 
 class MainActivity : ComponentActivity() {
+
+
     @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            TmdbTheme {
+
+        try {
+            super.onCreate(savedInstanceState)
+            setContent {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -45,14 +50,21 @@ class MainActivity : ComponentActivity() {
                             val tab: MainScreenTab = currentScreen.tab
                             MainScreen(mainScreenTab = tab)
                         }
-                        is Screen.Details-> {
+                        is Screen.Details -> {
                             val movieData: MovieItemViewState = currentScreen.movie
                             ScreenDetails(movie = movieData)
                         }
                     }
                 }
-
             }
+        } catch (e : InvocationTargetException) {
+
+            // Answer:
+            e.cause;
+        } catch ( e: InvocationTargetException) {
+
+            // generic exception handling
+            e.printStackTrace();
         }
     }
 }
