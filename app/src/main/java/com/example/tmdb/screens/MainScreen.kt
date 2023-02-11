@@ -1,5 +1,6 @@
 package com.example.tmdb.screens
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -44,7 +45,8 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
                                         Alignment.Center
                                     )
                                     .clickable { Router.navigateTo(Screen.MainScreen(lastHomeTab)) }
-                            )
+                            
+                            else -> throw IllegalStateException("You didnt pass correct screen")
                         }
                     }
 
@@ -108,6 +110,13 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
                 )
             }
         }) {
+            paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+          ){}
+        Log.i("info", "info");
+
         if (mainScreenTab == MainScreenTab.HomeTab) {
             HomeScreen()
         } else {

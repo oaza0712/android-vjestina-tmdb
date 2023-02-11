@@ -44,7 +44,7 @@ fun DefaultPreview() {
 fun HomeScreen() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     Scaffold(scaffoldState = scaffoldState)
-    {
+    { padding->
         LazyColumn(Modifier.fillMaxSize()) {
             item {
                 Row(

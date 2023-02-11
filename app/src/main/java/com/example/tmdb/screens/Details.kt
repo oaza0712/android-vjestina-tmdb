@@ -57,6 +57,7 @@ fun DetailsScreen() {
                                     )
                                     .clickable { Router.navigateTo(Screen.MainScreen(Router.lastHomeTab)) }
                             )
+                            else -> throw IllegalStateException("You didnt pass correct screen")
                         }
                     }
 
@@ -117,7 +118,7 @@ fun DetailsScreen() {
                     unselectedContentColor = Colors.Grey200.copy(alpha = 0.6f)
                 )
             }
-        }) {
+        }) {padding ->
         LazyColumn(Modifier.fillMaxSize()) {
             //Picture
             item {

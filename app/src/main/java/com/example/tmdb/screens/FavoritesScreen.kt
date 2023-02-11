@@ -1,26 +1,22 @@
 package com.example.tmdb.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
+
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.res.painterResource
+
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tmdb.R
 import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.ui.theme.Colors
-import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.screens.movieList as movieList
 import androidx.compose.foundation.lazy.items
 import com.example.tmdb.composables.MovieCard
@@ -65,7 +61,7 @@ var movieList =
 @Composable
 fun FavoritesScreen() {
     val scaffoldStateMain: ScaffoldState = rememberScaffoldState()
-    Scaffold(scaffoldState = scaffoldStateMain) {
+    Scaffold(scaffoldState = scaffoldStateMain) { padding->
         Column(Modifier.fillMaxSize()) {
 
             Spacer(
@@ -88,7 +84,7 @@ fun FavoritesScreen() {
             )
 
             LazyVerticalGrid(
-                cells = GridCells.Fixed(3),
+                columns = GridCells.Fixed(3),
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(movieList) { item ->
