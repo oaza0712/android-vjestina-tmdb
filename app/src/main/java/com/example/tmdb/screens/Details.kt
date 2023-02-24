@@ -91,7 +91,11 @@ var crewList = listOf(
 @Preview
 @Composable
 fun DetailsPreview() {
-    Scaffold() {
+    Scaffold() {paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+        ){}
         TmdbTheme {
             DetailsContent(overview = "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
                 progress = "75%",
@@ -157,7 +161,11 @@ fun DetailsContent(
 
             }
         },
-    ) {
+    ) { paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+        ){}
         val scrollState = rememberScrollState()
         Column(
             Modifier

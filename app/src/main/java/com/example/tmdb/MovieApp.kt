@@ -1,5 +1,5 @@
 package com.example.tmdb
-
+/*
 import android.app.Application
 import com.example.tmdb.di.movieAppModule
 //import com.example.tmdb.di.movieAppModule
@@ -10,4 +10,4 @@ class MovieApp: Application() {
         super.onCreate()
         startKoin { modules(movieAppModule) }
     }
-}
+}*/

@@ -1,6 +1,6 @@
 package com.example.tmdb.di
 
-
+/*
 import androidx.lifecycle.ViewModel
 import com.example.tmdb.composables.MovieApi
 import com.example.tmdb.composables.MovieApiImpl
@@ -41,4 +41,4 @@ val movieAppModule = module {
     }
 
 
-}
+}*/

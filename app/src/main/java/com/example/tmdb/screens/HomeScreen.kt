@@ -22,11 +22,50 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tmdb.R
+import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
-import org.koin.androidx.compose.getViewModel
 
+var movies =
+    listOf(
+        MovieItemViewState(
+            id = 1,
+            title = "Iron Man 1",
+            overview = "Iron Man1",
+            imageUrl = R.drawable.iron_man_1_1x,
+            //favorite = true
+        ),
+        MovieItemViewState(
+            id = 2,
+            title = "GATTACA",
+            overview = "GATTACA",
+            imageUrl = R.drawable.gattaca_1x,
+            //favorite = true
+        ),
+        MovieItemViewState(
+            id = 3,
+            title = "Lion King",
+            overview = "Lion King",
+            imageUrl = R.drawable.lion_king_1x_,
+            //favorite = false
+        ),
+        MovieItemViewState(
+            id = 1,
+            title = "Iron Man 1",
+            overview = "Iron Man1",
+            imageUrl = R.drawable.godzilla_1x,
+            // favorite = false
+        ),
+        MovieItemViewState(
+            id = 2,
+            title = "GATTACA",
+            overview = "GATTACA",
+            imageUrl = R.drawable.jungle_beat_1x_,
+            //favorite = false
+        )
+    )
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -37,16 +76,18 @@ fun DefaultPreview() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(homeViewModel: HomeViewModel) {
+fun HomeScreen() {
 
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
-    val movieList = homeViewModel.popularMovies.collectAsState(initial = emptyList())
-    //val movieList2 = homeViewModel.freeMovies.collectAsState(initial = emptyList())
-    //val movieList3 = homeViewModel.trendingMovies.collectAsState(initial = emptyList())
+
 
     Scaffold(scaffoldState = scaffoldState)
-    {
+    {paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+        ){}
         LazyColumn(Modifier.fillMaxSize()) {
 
             //Searchbar
@@ -111,7 +152,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                         modifier = Modifier
                             .padding(horizontal = 15.dp)
                             .clickable {
-                                homeViewModel.selected = Popular.STREAMING
+                                //homeViewModel.selected = Popular.STREAMING
                             }
                     )
                     Text(
@@ -123,7 +164,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                             .padding(horizontal = 15.dp)
                             .padding(bottom = 10.dp)
                             .clickable {
-                                homeViewModel.selected = Popular.ON_TV
+                                //homeViewModel.selected = Popular.ON_TV
                             }
                     )
                     Text(
@@ -134,7 +175,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                         modifier = Modifier
                             .padding(horizontal = 15.dp)
                             .padding(bottom = 10.dp). clickable {
-                            homeViewModel.selected = Popular.FOR_RENT
+                            //homeViewModel.selected = Popular.FOR_RENT
                         }
                     )
                     Text(
@@ -146,7 +187,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                             .padding(horizontal = 15.dp)
                             .padding(bottom = 10.dp)
                             .clickable {
-                                homeViewModel.selected = Popular.IN_THEATHERS
+                               // homeViewModel.selected = Popular.IN_THEATHERS
                             }
                     )
                 }
@@ -157,7 +198,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
-                    movieItems = movieList.value,
+                    movieItems = movies,
                 )
             }
 
@@ -212,7 +253,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
-                    movieItems = movieList.value,
+                    movieItems = movies,
                 )
             }
 
@@ -266,7 +307,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
                 MoviesList(
                     modifier = Modifier,
                     onMovieItemClick = { Router.navigateTo(Screen.Details(it)) },
-                    movieItems = movieList.value,
+                    movieItems =movies,
                 )
             }
         }

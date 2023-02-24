@@ -4,6 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -23,15 +26,58 @@ import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
 import androidx.compose.foundation.lazy.items
 import com.example.tmdb.composables.MovieCard
-import org.koin.androidx.compose.getViewModel
+
+
+var movieList =
+        listOf(
+            MovieItemViewState(
+                id = 1,
+                title = "Iron Man 1",
+                overview = "Iron Man1",
+                imageUrl = R.drawable.iron_man_1_1x,
+                //favorite = true
+            ),
+            MovieItemViewState(
+                id = 2,
+                title = "GATTACA",
+                overview = "GATTACA",
+                imageUrl = R.drawable.gattaca_1x,
+                //favorite = true
+            ),
+            MovieItemViewState(
+                id = 3,
+                title = "Lion King",
+                overview = "Lion King",
+                imageUrl = R.drawable.lion_king_1x_,
+                //favorite = false
+            ),
+            MovieItemViewState(
+                id = 1,
+                title = "Iron Man 1",
+                overview = "Iron Man1",
+                imageUrl = R.drawable.godzilla_1x,
+               // favorite = false
+            ),
+            MovieItemViewState(
+                id = 2,
+                title = "GATTACA",
+                overview = "GATTACA",
+                imageUrl = R.drawable.jungle_beat_1x_,
+                //favorite = false
+            )
+        )
+
 @ExperimentalFoundationApi
 @Preview
 @Composable
 fun FavoritesScreen() {
-    /*val favoriteViewModel: FavoriteViewModel = getViewModel()
     val scaffoldStateMain: ScaffoldState = rememberScaffoldState()
-    movieList = favoriteViewModel.favorites;
     Scaffold(scaffoldState = scaffoldStateMain) {
+            paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+        ){}
         Column(Modifier.fillMaxSize()) {
 
             Text(
@@ -43,7 +89,7 @@ fun FavoritesScreen() {
             )
 
             LazyVerticalGrid(
-                cells = GridCells.Fixed(3),
+                columns = GridCells.Fixed(3),
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(movieList) { item ->
@@ -58,5 +104,5 @@ fun FavoritesScreen() {
             }
         }
     }
-    BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab)) })*/
+    BackPressHandler(onBackPressed = { Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab)) })
 }

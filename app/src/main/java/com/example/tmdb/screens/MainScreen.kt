@@ -21,12 +21,11 @@ import androidx.compose.ui.unit.dp
 import com.example.tmdb.R
 import com.example.tmdb.screens.Router.lastHomeTab
 import com.example.tmdb.ui.theme.Colors
-import org.koin.androidx.compose.get
 
 @OptIn(ExperimentalFoundationApi::class)
 @ExperimentalMaterialApi
 @Composable
 fun MainScreen(mainScreenTab: MainScreenTab) {
 
-    HomeScreen(homeViewModel = HomeViewModel(get()))
+    HomeScreen()
 }

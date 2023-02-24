@@ -27,7 +27,6 @@ import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.screens.*
 import com.example.tmdb.ui.theme.*
 import com.example.tmdb.ui.theme.Colors
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.InvocationTargetException
 
 
