@@ -29,6 +29,7 @@ object Router {
                 lastHomeTab = (currentScreen as Screen.MainScreen).tab
                 currentScreen = destination
             }
+            else -> throw IllegalStateException("You didnt pass correct screen")
         }
     }
 }

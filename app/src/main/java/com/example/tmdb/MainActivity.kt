@@ -52,7 +52,9 @@ class MainActivity : ComponentActivity() {
                         is Screen.Details -> {
                             val movieData: MovieItemViewState = currentScreen.movie
                             ScreenDetails(movie = movieData)
+
                         }
+                        else -> throw IllegalStateException("You didnt pass correct screen")
                     }
                 }
             }
