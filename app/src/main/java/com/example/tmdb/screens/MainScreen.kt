@@ -104,6 +104,5 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
         } else {
             FavoritesScreen()
         }
-        //HomeScreen()
     }
 }
