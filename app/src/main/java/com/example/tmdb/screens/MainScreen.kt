@@ -99,6 +99,11 @@ fun MainScreen(mainScreenTab: MainScreenTab) {
             .fillMaxSize()
             .padding(bottom = paddingValues.calculateBottomPadding())
         ){}
-        HomeScreen()
+        if (mainScreenTab == MainScreenTab.HomeTab) {
+            HomeScreen()
+        } else {
+            FavoritesScreen()
+        }
+        //HomeScreen()
     }
 }
