@@ -26,6 +26,79 @@ import com.example.tmdb.ui.theme.Colors
 @ExperimentalMaterialApi
 @Composable
 fun MainScreen(mainScreenTab: MainScreenTab) {
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+    Scaffold(scaffoldState = scaffoldState,
+        topBar = {
+            TopAppBar(
+                backgroundColor = Colors.Blue500
+            )
+            {
+                Row() {
 
-    HomeScreen()
+                    Image(
+                        painter = painterResource(id = R.drawable.tmdb),
+                        contentDescription = "TMDB App Bar",
+                        alignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .fillMaxWidth()
+                            .wrapContentWidth(align = Alignment.CenterHorizontally)
+                            .padding(8.dp)
+                            .scale(3F)
+                    )
+                }
+
+            }
+        },
+        bottomBar = {
+            val selectedIndex = remember { mutableStateOf(1) };
+            BottomNavigation(
+                elevation = 10.dp,
+                backgroundColor = Colors.White100
+            ) {
+
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Home,
+                            "Home",
+                            // tint =Colors.Blue700
+
+                        )
+
+                    },
+                    label = { Text(text = "Home" /*colors = Colors.Grey200.copy(alpha = 0.6f)*/) },
+                    selected = (selectedIndex.value == 1),
+                    onClick = {
+                        Router.navigateTo(Screen.MainScreen(MainScreenTab.HomeTab))
+                        selectedIndex.value = 1
+                    },
+                    selectedContentColor = Colors.Blue700,
+                    unselectedContentColor = Colors.Grey200.copy(alpha = 0.6f)
+                )
+
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            "Favorites",
+                            //tint = Colors.Blue700
+                        )
+                    },
+                    label = { Text(text = "Favorite", color = Colors.Blue700) },
+                    selected = (selectedIndex.value == 0),
+                    onClick = {
+                        Router.navigateTo(Screen.MainScreen(MainScreenTab.FavoriteTab))
+                        selectedIndex.value = 0
+                    }, selectedContentColor = Colors.Blue700,
+                    unselectedContentColor = Colors.Grey200.copy(alpha = 0.6f)
+                )
+            }
+        }){ paddingValues ->
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+        ){}
+        HomeScreen()
+    }
 }
