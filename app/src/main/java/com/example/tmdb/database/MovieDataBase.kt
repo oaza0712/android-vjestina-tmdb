@@ -1,6 +1,5 @@
-package com.example.tmdb.vmmv
+package com.example.tmdb.database
 
-import com.example.tmdb.R
 import com.example.tmdb.composables.MovieItemViewState
 
 class MovieDataBase {
