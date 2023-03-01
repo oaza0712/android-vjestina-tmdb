@@ -1,4 +1,4 @@
-package com.example.tmdb.screens
+package com.example.tmdb.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
 import androidx.lifecycle.viewModelScope
 import com.example.tmdb.R
+import com.example.tmdb.repository.MovieRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 

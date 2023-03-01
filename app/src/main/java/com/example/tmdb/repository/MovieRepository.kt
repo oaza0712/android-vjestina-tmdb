@@ -1,26 +1,33 @@
-package com.example.tmdb.screens
+package com.example.tmdb.repository
 
 import android.graphics.Movie
 import com.example.tmdb.composables.MovieApi
 import com.example.tmdb.composables.MovieItemViewState
+import com.example.tmdb.viewmodels.Popular
 import kotlinx.coroutines.flow.*
+
 import kotlinx.coroutines.selects.select
 
 // tu wrapas u flow
 
 interface MovieRepository {
-    fun getPopular(selected: Popular): Flow<List<MovieItemViewState>>
+    fun getPopularMovies(): Flow<List<MovieItemViewState>>
 }
 
 internal class MovieRepositoryImpl(private val movieApi: MovieApi) : MovieRepository {
 
-    override fun getPopular(selected: Popular) /*:Flow<List<MovieItemViewState>>*/ = flow {
+    override fun getPopularMovies(): Flow<List<MovieItemViewState>> = popularMovies
+     private val popularMovies = getPopularMovieFlow(MovieCategory.PopularMovies)
+    private fun getPopularMovieFlow(selected: MovieCategory) : Flow<List<MovieItemViewState>> = flow {
         when (selected) {
-            Popular.STREAMING -> emit(movieApi.getStreaming());
-            Popular.FOR_RENT -> emit(movieApi.getForRent());
-            Popular.IN_THEATHERS -> emit(movieApi.getInTheaters());
-            Popular.ON_TV -> emit(movieApi.getOnTv());
+            MovieCategory.PopularMovies -> emit(movieApi.getStreaming());
+            MovieCategory.TopRatedMovies -> emit(movieApi.getForRent());
         }
+    }
+
+    sealed class MovieCategory {
+        object PopularMovies : MovieCategory()
+        object TopRatedMovies : MovieCategory()
     }
 }
     /*
