@@ -15,7 +15,7 @@ val movieAppModule = module {
     val homeModule = module {
 
         viewModel {
-            HomeViewModel(MovieRepository = get())
+            HomeViewModel(movieRepository = get())
         }
     }
 
