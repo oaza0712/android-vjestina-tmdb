@@ -1,9 +1,8 @@
 package com.example.tmdb.repository
 
 import android.graphics.Movie
-import com.example.tmdb.composables.MovieApi
+import com.example.tmdb.viewmodels.MovieApi
 import com.example.tmdb.composables.MovieItemViewState
-import com.example.tmdb.viewmodels.Popular
 import kotlinx.coroutines.flow.*
 
 import kotlinx.coroutines.selects.select
@@ -12,10 +11,21 @@ import kotlinx.coroutines.selects.select
 
 interface MovieRepository {
     fun getPopularMovies(): Flow<List<MovieItemViewState>>
+    fun getTopRatedMovies(): Flow<List<MovieItemViewState>>
 }
 
 internal class MovieRepositoryImpl(private val movieApi: MovieApi) : MovieRepository {
 
+    override fun getPopularMovies(): Flow<List<MovieItemViewState>> = flow {
+            emit(movieApi.getPopularMovies());
+    }
+
+    override fun getTopRatedMovies(): Flow<List<MovieItemViewState>> = flow {
+        emit(movieApi.getTopRatedMovies());
+    }
+
+
+    /*
     override fun getPopularMovies(): Flow<List<MovieItemViewState>> = popularMovies
      private val popularMovies = getPopularMovieFlow(MovieCategory.PopularMovies)
     private fun getPopularMovieFlow(selected: MovieCategory) : Flow<List<MovieItemViewState>> = flow {
@@ -24,11 +34,8 @@ internal class MovieRepositoryImpl(private val movieApi: MovieApi) : MovieReposi
             MovieCategory.TopRatedMovies -> emit(movieApi.getForRent());
         }
     }
+*/
 
-    sealed class MovieCategory {
-        object PopularMovies : MovieCategory()
-        object TopRatedMovies : MovieCategory()
-    }
 }
     /*
     private val favoriteMovies = MutableStateFlow(emptyList<MovieItemViewState>())

@@ -27,6 +27,9 @@ import com.example.tmdb.composables.MovieItemViewState
 import com.example.tmdb.ui.theme.Colors
 import com.example.tmdb.ui.theme.MoviesList
 import com.example.tmdb.ui.theme.TmdbTheme
+import org.koin.androidx.compose.koinViewModel
+
+import org.koin.androidx.compose.viewModel
 
 var movies =
     listOf(
@@ -77,7 +80,7 @@ fun DefaultPreview() {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen() {
-
+    val homeViewModel by koinViewModel<HomeViewModel>()
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
 
@@ -144,7 +147,7 @@ fun HomeScreen() {
             item {
                 Row(Modifier.fillMaxWidth()) {
                     Text(
-                        text = "Streaming",
+                        text = "Popular",
                         color = Colors.Blue700,
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight(800),
@@ -156,7 +159,7 @@ fun HomeScreen() {
                             }
                     )
                     Text(
-                        text = "On TV",
+                        text = "Top rated",
                         color = Colors.Blue700,
                         fontWeight = FontWeight(300),
                         fontSize = 15.sp,
@@ -167,29 +170,7 @@ fun HomeScreen() {
                                 //homeViewModel.selected = Popular.ON_TV
                             }
                     )
-                    Text(
-                        text = "For Rent",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp). clickable {
-                            //homeViewModel.selected = Popular.FOR_RENT
-                        }
-                    )
-                    Text(
-                        text = "In theathers",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp)
-                            .clickable {
-                               // homeViewModel.selected = Popular.IN_THEATHERS
-                            }
-                    )
+
                 }
             }
 
@@ -205,7 +186,7 @@ fun HomeScreen() {
             //Main Text
             item {
                 Text(
-                    text = "Free to watch",
+                    text = "Now playing",
                     color = Colors.Blue700,
                     fontWeight = FontWeight(800),
                     fontSize = 20.sp,
@@ -215,37 +196,6 @@ fun HomeScreen() {
                 )
             }
 
-            //Small text
-            item {
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Movies",
-                        textDecoration = TextDecoration.Underline,
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp)
-                            .clickable {
-                                //homeViewModel.selected = Popular.FREE_MOVIES
-                            }
-                    )
-                    Text(
-                        text = "TV",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp)
-                            .clickable {
-                                //homeViewModel.selected= Popular.FREE_TV
-                            }
-                    )
-                }
-
-            }
 
             //Movie List
             item {
@@ -260,7 +210,7 @@ fun HomeScreen() {
             //Main text
             item {
                 Text(
-                    text = "Trending",
+                    text = "Upcoming",
                     color = Colors.Blue700,
                     fontWeight = FontWeight(800),
                     fontSize = 20.sp,
@@ -268,38 +218,6 @@ fun HomeScreen() {
                         .padding(horizontal = 15.dp)
                         .padding(top = 15.dp, bottom = 10.dp)
                 )
-            }
-
-            //Small text
-            item {
-                Row(Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Today",
-                        textDecoration = TextDecoration.Underline,
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(800),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp)
-                            .clickable {
-                               // homeViewModel.selected = Trending.TRENDING_TODAY
-                            }
-                    )
-                    Text(
-                        text = "This week",
-                        color = Colors.Blue700,
-                        fontWeight = FontWeight(300),
-                        fontSize = 15.sp,
-                        modifier = Modifier
-                            .padding(horizontal = 15.dp)
-                            .padding(bottom = 10.dp)
-                            .clickable {
-                               // homeViewModel.selected = Trending.TRENDING_WEEK
-                            }
-                    )
-                }
-
             }
 
             //Movie List
