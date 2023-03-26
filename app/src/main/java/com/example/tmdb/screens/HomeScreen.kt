@@ -80,7 +80,7 @@ fun DefaultPreview() {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen() {
-    val homeViewModel by koinViewModel<HomeViewModel>()
+    val homeViewModel by ViewModel<HomeViewModel>()
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
 
